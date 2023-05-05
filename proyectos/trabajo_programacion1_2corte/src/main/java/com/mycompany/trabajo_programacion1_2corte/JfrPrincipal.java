@@ -35,6 +35,7 @@ public class JfrPrincipal extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -62,7 +63,7 @@ public class JfrPrincipal extends javax.swing.JFrame {
 
         jMenu2.setText("opciones ");
 
-        jMenuItem2.setText("agregar de datos");
+        jMenuItem2.setText("Agregar de datos");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -70,9 +71,9 @@ public class JfrPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem2);
 
-        jMenu3.setText("ordenamiento");
+        jMenu3.setText("Ordenamiento");
 
-        jMenuItem3.setText("ordenamiento quicksort");
+        jMenuItem3.setText("ordenamiento (precios quicksort)");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -88,7 +89,7 @@ public class JfrPrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem4);
 
-        jMenuItem5.setText("ordenamiento shell");
+        jMenuItem5.setText("ordenamiento (Z-A shell)");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
@@ -98,7 +99,7 @@ public class JfrPrincipal extends javax.swing.JFrame {
 
         jMenu2.add(jMenu3);
 
-        jMenu4.setText("busqueda");
+        jMenu4.setText("Busqueda");
 
         jMenuItem6.setText("buscar vehiculo(marca)");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +118,14 @@ public class JfrPrincipal extends javax.swing.JFrame {
         jMenu4.add(jMenuItem7);
 
         jMenu2.add(jMenu4);
+
+        jMenuItem8.setText("Eliminar");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem8);
 
         jMenuBar1.add(jMenu2);
 
@@ -176,11 +185,20 @@ public class JfrPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // ordenamiento shell
+        jfrpri.setOrdenamiento_shell();
+        jfrpri.setllenarJTable(JTable1);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // ordenamiento quicksort.
+        // ordenamiento quicksort
+        jfrpri.setquicksort(0, jfrpri.v.length-1);
+        jfrpri.setllenarJTable(JTable1);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+       jfrpri = new Concesionario_V();
+       jfrpri.setllenarJTable(JTable1);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     
     public static void main(String args[]) {
@@ -229,6 +247,7 @@ public class JfrPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

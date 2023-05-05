@@ -15,7 +15,7 @@ public class Concesionario_V {
     
     public Concesionario_V() { 
         
-        v= new Vehiculo[2];
+        v= new Vehiculo[1];
         
         for(int i=0;i<v.length;i++){
         
@@ -56,7 +56,7 @@ public class Concesionario_V {
             boolean est,
             int i  
     ){
-        if(getPosmatri(jtfmatri.getText())!=-1){ // si el metodo retorna -1: no lo enconro /i(numero):poscision de la matricula repetida.
+        if(getPosmatri(jtfmatri.getText()) != -1){ // si el metodo retorna -1: no lo enconro /i(numero):poscision de la matricula repetida.
         
             JOptionPane.showMessageDialog(null," la matricula ya se encuentra registrada intente nuevamente");
             jtfmatri.setText("");
@@ -90,7 +90,7 @@ public class Concesionario_V {
            i++;
        }
        
-       if(band!=false){
+       if(band != false){
            
            v[pos].mostrar();
        
@@ -107,7 +107,7 @@ public class Concesionario_V {
         int fin=v.length-1;
         int pos;
         
-        while(inicio<=fin){
+        while(inicio <= fin){
             
             pos=((inicio+fin)/2);
             if(v[pos].matricula.equals(matricula)){
@@ -130,16 +130,16 @@ public class Concesionario_V {
             
         int i_min;
         Vehiculo temp;
-        for(int i=0;i<v.length;i++){
+        for(int i= 0; i < v.length; i++){
             i_min=i;
             // este bucle va a buscar el elemento menor lexicograficamente.
-            for(int j=i+1;j<v.length;j++){ 
+            for(int j= i+1; j < v.length; j++){ 
                 /*
                  compareTO devuelve <0 si la cadena que llama al metodo es primero lexicograficamnte.
                 devuleve ==0 ,entonces las cadenas son lexicograficamente equivalentes 
                 devuelve >0 , entonces el parametro pasado al metodo compareTO es lexicograficamente el primero. 
                 */
-                if(v[j].matricula.compareTo(v[i_min].matricula)<0){
+                if(v[j].matricula.compareTo(v[i_min].matricula) < 0){
                     
                     i_min=j;
                 }
@@ -170,6 +170,74 @@ public class Concesionario_V {
                 v[i_min].setEstado(temp.getEstado());
             
         }
+    }
+    
+    // ordenamiento por marca descendentemente
+    public void setOrdenamiento_shell(){
+            
+        int salto,i;   
+        Vehiculo temp;
+        boolean cambio;
+        
+        for(salto= v.length/2 ;salto != 0; salto/=2){
+            cambio=true;
+            while(cambio){
+                cambio=false;
+                for(i= salto;i < v.length; i++){
+                    
+                    if(v[i-salto].getMarca().compareTo(v[i].getMarca())<0){
+                        
+                        temp= new Vehiculo(
+                                v[i].getMatricula(),
+                                v[i].getMarca(),
+                                v[i].getModelo(),
+                                v[i].getPrecio(),
+                                v[i].getEstado()
+                        );
+                        
+                        v[i].setMatricula(v[i-salto].getMatricula());
+                        v[i].setMarca(v[i-salto].getMarca());
+                        v[i].setModelo(v[i-salto].getModelo());
+                        v[i].setPrecio(v[i-salto].getPrecio());
+                        v[i].setEstado(v[i-salto].getEstado());
+                         
+                        v[i-salto].setMatricula(temp.getMatricula());
+                        v[i-salto].setMarca(temp.getMarca());
+                        v[i-salto].setModelo(temp.getModelo());
+                        v[i-salto].setPrecio(temp.getPrecio());
+                        v[i-salto].setEstado(temp.getEstado());
+                        
+                        cambio=true;
+                     }
+                } 
+            }
+        }
+    }
+    
+    public void setquicksort(int inicio,int fin){
+        
+        if(inicio < fin){
+            float pivote = v[fin].getPrecio();
+            int i= inicio-1;
+            for(int j= inicio; j < fin ; j++){
+                if(v[j].getPrecio() > pivote){
+                    i++;
+                    intercambio(i,j);
+                }
+            }
+            i++;
+            intercambio(i,fin);
+            setquicksort(inicio,i-1);
+            setquicksort(i+1,fin);
+        }
+    }
+    
+   
+    public void intercambio(int i, int j){
+        
+        Vehiculo temp = v[i];
+        v[i] = v[j];
+        v[j] = temp;
     }
     
     
