@@ -13,13 +13,14 @@ import javax.swing.table.DefaultTableModel;
      String nombreProducto[]; 
      float precioProducto[]; 
      int cantidad[];
+     float total_P[];
     
       public  Productos(){ 
-       codigoProducto = new int [2]; 
+        codigoProducto = new int [2]; 
         nombreProducto = new String[2];
         precioProducto = new float[2];
-         cantidad = new int[2];
-         
+        cantidad = new int[2];
+        
          for(int i=0;i<2;i++){
              
              codigoProducto[i]= 0;
@@ -123,12 +124,13 @@ import javax.swing.table.DefaultTableModel;
           return false;
       }else{
        
+          
        codigoProducto[indice]=Integer.parseInt(jtcodigo.getText());
        nombreProducto[indice]= jtnombre;
        precioProducto[indice]= jtprecio;
        cantidad[indice]=jtcantidad;
        jtcodigo.requestFocus();
-        return true;
+          return true;
       }
     }
     
@@ -154,11 +156,12 @@ import javax.swing.table.DefaultTableModel;
         modelo.addColumn("Nombre");
         modelo.addColumn("Precio");
         modelo.addColumn("Cantidad");
+        modelo.addColumn("Total a pagar");
         
         while(posvec<codigoProducto.length){
             
             // creamos una nueva fila para agregar los datos.
-            modelo.addRow( new Object[] {"","","",""});
+            modelo.addRow( new Object[] {"","","","",""});
             cargarElementos(modelo,posvec,posfilat);
             posvec++;
             posfilat++;
