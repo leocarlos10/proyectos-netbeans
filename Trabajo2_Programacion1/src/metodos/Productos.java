@@ -7,6 +7,7 @@ import javax.swing.table.DefaultTableModel;
 *
 *  Leocarlos Ospina y moises Doria
    Esto es una modificacion 
+   cambio 2
 */
 
   public class Productos {
