@@ -162,9 +162,9 @@ public class jfrmDatos extends javax.swing.JFrame {
         boolean estado = false;
         try{
         estado=datos.jfrmp.setAddinfo(codigo, nombre.getText(), Float.parseFloat(precio.getText()), Integer.parseInt(cantidad.getText()),i);
-        } catch(NumberFormatException e){
-              JOptionPane.showMessageDialog(null," Error !. Porfavor revise los datos de ingreso");
-          }
+        }catch(NumberFormatException e){
+         JOptionPane.showMessageDialog(null," Error !. revise los Datos de ingreso");
+        }
         if(estado!= false){
             i++; 
             // ya que todos los vectores tinen el mismo tamaño solo basta con que la i sea menor a uno de ellos eso quiere decir que debe seguir agregando datos.

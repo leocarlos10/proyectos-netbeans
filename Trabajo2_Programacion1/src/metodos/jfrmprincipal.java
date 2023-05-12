@@ -34,6 +34,7 @@ public class jfrmprincipal extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -43,7 +44,7 @@ public class jfrmprincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo", "Nombre", "Precio", "Cantidad", "Total a pagar"
+                "Codigo", "Nombre", "Precio", "Cantidad"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -61,7 +62,7 @@ public class jfrmprincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Opciones");
+        jMenu2.setText("opciones");
 
         jMenuItem1.setText("Agregar datos");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -94,6 +95,14 @@ public class jfrmprincipal extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem5);
+
+        jMenuItem6.setText("informe (productos)");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem6);
 
         jMenuItem7.setText("Eliminar");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
@@ -147,15 +156,16 @@ public class jfrmprincipal extends javax.swing.JFrame {
         
         int cod = Integer.parseInt(JOptionPane.showInputDialog(" Digite el codigo a buscar"));
        int pos=jfrmp.getBusquedaC(cod);
-       if(pos==-1){
-           JOptionPane.showMessageDialog(null," El codigo ingresado no ha sido encontrado. Intente nuevamente");
-       } else{
-            jfrmp.MostrarInfo(pos);
-       }
+        jfrmp.MostrarInfo(pos);
+        
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+       
+        jfrmp.Mostrar_Informe();
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // Limpiar 
         
         jfrmp = new Productos();
         jfrmp.setllenarJTable(jTable1);
@@ -206,6 +216,7 @@ public class jfrmprincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTable1;

@@ -11,7 +11,6 @@ public class jfrmtam extends javax.swing.JFrame {
 
     jfrmprincipal t;
     JTable tabla;
-    
      public jfrmtam(jfrmprincipal aux, JTable jtable1) {
          t=aux;
          tabla= jtable1;
