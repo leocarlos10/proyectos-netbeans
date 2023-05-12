@@ -6,8 +6,6 @@ import javax.swing.table.DefaultTableModel;
 /*
 *
 *  Leocarlos Ospina y moises Doria
-   Esto es una modificacion 
-   cambio 2
 */
 
   public class Productos {
@@ -169,6 +167,22 @@ import javax.swing.table.DefaultTableModel;
         tabla.setModel(modelo);
     }
     
+   public void Mostrar_Informe(){
+       
+       String info=" Los nombres que cumplen con las condiciones son: \n";
+       
+       for(int i=0;i<nombreProducto.length;i++){
+           
+           if(precioProducto[i]>2500 && cantidad[i]<5){
+               info+=nombreProducto[i]+"\n";
+           }
+       }
+       
+       JOptionPane.showMessageDialog(null,info);
+   }
+  
+    
+   
     public void MostrarInfo(int indice){
         
         String info= " Los datos del producto solicitado son: \n";
@@ -177,6 +191,9 @@ import javax.swing.table.DefaultTableModel;
         info+= " Precio: "+precioProducto[indice]+"\n";
         info+= " Cantidad:"+cantidad[indice]+"\n";
         JOptionPane.showMessageDialog(null, info);
+        
+        // prueba
+    
     }
 }
 
