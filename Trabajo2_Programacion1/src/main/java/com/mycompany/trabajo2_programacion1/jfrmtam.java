@@ -1,6 +1,7 @@
 
 package com.mycompany.trabajo2_programacion1;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 /**
@@ -121,11 +122,22 @@ public class jfrmtam extends javax.swing.JFrame {
     }//GEN-LAST:event_cerrarActionPerformed
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
-       
-        t.jfrmp = new Productos(jtextTam);
-        jfrmDatos datos = new jfrmDatos(t);
-        datos.setVisible(true);
-        dispose();
+        NumberFormatException band=null;
+        try{
+            t.jfrmp = new Productos(jtextTam);
+        }catch(NumberFormatException e){
+            band=e;
+            JOptionPane.showMessageDialog(null," Lo sentimos! revise el dato de ingreso");
+        }
+        
+        if(band!= null){
+            jtextTam.setText("");
+            jtextTam.requestFocus();
+        } else{
+            jfrmDatos datos = new jfrmDatos(t);
+            datos.setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_registrarActionPerformed
 
    

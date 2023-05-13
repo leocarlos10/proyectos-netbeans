@@ -161,9 +161,9 @@ public class jfrmDatos extends javax.swing.JFrame {
 
         boolean estado = false;
         try{
-        estado=datos.jfrmp.setAddinfo(codigo, nombre.getText(), Float.parseFloat(precio.getText()), Integer.parseInt(cantidad.getText()),i);
+            estado=datos.jfrmp.setAddinfo(codigo, nombre.getText(), Float.parseFloat(precio.getText()), Integer.parseInt(cantidad.getText()),i);
         }catch(NumberFormatException e){
-         JOptionPane.showMessageDialog(null," Error !. revise los Datos de ingreso");
+            JOptionPane.showMessageDialog(null," Error !. revise los Datos de ingreso");
         }
         if(estado!= false){
             i++; 

@@ -201,6 +201,7 @@ import javax.swing.table.DefaultTableModel;
    }
    
    // metodo para calcular el total a pagar al supermercado
+   
    public float calcTotal_p(){
        
        float total=0;
