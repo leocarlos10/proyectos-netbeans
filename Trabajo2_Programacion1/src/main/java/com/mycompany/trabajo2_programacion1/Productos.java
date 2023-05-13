@@ -7,11 +7,7 @@ import javax.swing.table.DefaultTableModel;
 *
 *  Leocarlos Ospina y moises Doria
 */
-/*
-   Utilizando otro vector auxiliar, almacenar el valor total que cobrara 
-   el supermercado por la venta cada producto en existencia.
-   Se debe tener en cuenta el precio de cada producto y la cantidad en existencia.
-   */
+
 
   public class Productos {
      int codigoProducto[];
