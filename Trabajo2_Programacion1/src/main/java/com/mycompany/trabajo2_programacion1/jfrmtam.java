@@ -5,7 +5,7 @@ import javax.swing.JTable;
 
 /**
  *
- * @author USUARIO
+ * @author leo y moises
  */
 public class jfrmtam extends javax.swing.JFrame {
 

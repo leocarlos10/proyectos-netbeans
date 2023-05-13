@@ -3,7 +3,7 @@ package com.mycompany.trabajo2_programacion1;
 import javax.swing.JOptionPane;
 /**
  *
- * @ leo
+ * @ leo y moises
  */
 public class jfrmprincipal extends javax.swing.JFrame {
 
