@@ -75,30 +75,17 @@ public class Concesionario_V {
     }
     
     
-    public void setBusqueda_Marca(String marca){
+    public int setBusqueda_Marca(String marca){
        // con el metodo de busqueda secuencial buscamos la marca y mostramos los datos.
-       boolean band=false; // hacemos uso de una bandera.
        
-       int i=0,pos=0;
-       while(i<v.length && band==false){
+      
+       for(int i=0;i<v.length;i++){
            
-           if(v[i].marca.equalsIgnoreCase(marca)){
-               
-               band=true;
-               pos=i;
-           }
-           i++;
+           if(v[i].getMarca().equalsIgnoreCase(marca))
+                return i;
        }
-       
-       if(band != false){
-           
-           v[pos].mostrar();
-       
-       } else{
-           
-           JOptionPane.showMessageDialog(null," El vehiculo no ha sido encontrado.");
-       
-       }
+       // si no encuentra la marca simplemente retorna -1.
+       return -1;
     }
     
     public int getBusqueda_Bi(String matricula){
@@ -242,6 +229,8 @@ public class Concesionario_V {
     
     
     public void registrarFilaJTable( DefaultTableModel modelo,int posvec,int fila ){
+        // con el metodo setValue agregamos los datos en la tabla ya que la tabla es una matriz 
+        // utilizamos el parametro postab para movernos entre filas 1-2-3
         
         modelo.setValueAt(v[posvec].matricula, fila, 0);
         modelo.setValueAt(v[posvec].marca, fila, 1);
@@ -251,25 +240,31 @@ public class Concesionario_V {
     
     }
     
+    // este metodo resive el JTable 
     
     public void setllenarJTable(JTable tabla){
         
-        int posvec=0;  
-        int postab=0;
+        int posvec=0;// pos del vector para ir cargando los datos e el vector 
+        int postab=0; // pos del JTable para ir cargando los datos en el JTable
         
      
-        DefaultTableModel modelo = new DefaultTableModel();
+        DefaultTableModel modelo = new DefaultTableModel(); // instanciamos un nuevo modelo para la tabla
         
+        // agregagos las columnas que tendra la nueva tabla.
         modelo.addColumn("matricula");
         modelo.addColumn("marca");
         modelo.addColumn("modelo");
         modelo.addColumn("precio");
         modelo.addColumn("estado");
         
+        // mientras la posicion del vector sea menor la tamaño sigue agregando.
         while(posvec<v.length){
             
-            modelo.addRow(new Object[]{"","","","",""});
+            modelo.addRow(new Object[]{"","","","",""}); // creamos una nueva fila en el JTable para poder agregar los datos.
+            // llamamos al modelo y con el metodo addRow instanciamos un nuevo objet
+            // aqui llamamos a el metodo que registra los datos en la fila y le pasamos por parametro el modelo, la posicion del vector, y la pos en la tabla.
             registrarFilaJTable(modelo,posvec,postab);
+            // aumentamos las posiciones en 1 para que en la proxia vuelta de bucle agregue los datos en una nueva fila 
             posvec++;
             postab++;
         }
