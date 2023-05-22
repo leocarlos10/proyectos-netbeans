@@ -77,8 +77,6 @@ public class Concesionario_V {
     
     public int setBusqueda_Marca(String marca){
        // con el metodo de busqueda secuencial buscamos la marca y mostramos los datos.
-       
-      
        for(int i=0;i<v.length;i++){
            
            if(v[i].getMarca().equalsIgnoreCase(marca))
@@ -88,6 +86,7 @@ public class Concesionario_V {
        return -1;
     }
     
+    // para utilizar la busqueda binaria el vector debe estar ordenado.
     public int getBusqueda_Bi(String matricula){
         
         int inicio=0;
@@ -100,12 +99,15 @@ public class Concesionario_V {
             if(v[pos].matricula.equals(matricula)){
                 
                 return pos;
+                
             } else if(v[pos].matricula.compareTo(matricula)<0){
                 
                 inicio=pos+1;
+                
             } else{
                 
                 fin=pos-1;
+                
             }
         }
         // si no lo encuentra returna -1
@@ -115,10 +117,10 @@ public class Concesionario_V {
     
     public void setOrdenamiento_seleccion(){
             
-        int i_min;
-        Vehiculo temp;
+        int i_min; // posible menor
+        Vehiculo temp; // variable para hacer el intercambio
         for(int i= 0; i < v.length; i++){
-            i_min=i;
+            i_min=i;// inicializo el menor en la posición 0
             // este bucle va a buscar el elemento menor lexicograficamente.
             for(int j= i+1; j < v.length; j++){ 
                 /*
