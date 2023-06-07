@@ -40,14 +40,14 @@ public class JfMaq extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("File");
+        jMenu1.setText("Salir");
 
         jMenuItem2.setText("Salir");
         jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Opciones");
 
         jMenuItem1.setText("Pedir golosinas");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
