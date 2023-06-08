@@ -106,7 +106,7 @@ public class MaquinaExpendedora {
             if ((cantidad[f][c]) > 0) {
 
                 cantidad[f][c]--;
-                JOptionPane.showMessageDialog(null, "La golosina fue adquirida correctamente ! "
+                JOptionPane.showMessageDialog(null, "La golosina "+nombresGolosinas[f][c]+" fue adquirida correctamente ! "
                         + " quedan: " + cantidad[f][c]);
 
             } else {
@@ -133,11 +133,12 @@ public class MaquinaExpendedora {
                colum= String.valueOf( pos.charAt(i));
            }
        }
-        
+
        int f1= Integer.parseInt(fil);
        int c1= Integer.parseInt(colum);
        
        cantidad[f1][c1]+=c;
+       JOptionPane.showMessageDialog(null, " se han agregado "+c+" golosinas a la casilla "+nombresGolosinas[f1][c1]);
         
     }
     

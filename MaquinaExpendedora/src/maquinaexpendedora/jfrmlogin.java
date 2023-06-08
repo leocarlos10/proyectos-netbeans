@@ -123,6 +123,7 @@ public class jfrmlogin extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null," Error contraseña incorrecta !!");
             password.setText("");
+            password.requestFocus();
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
