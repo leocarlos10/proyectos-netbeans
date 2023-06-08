@@ -1,5 +1,6 @@
 
 package maquinaexpendedora;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -11,6 +12,22 @@ public class MaquinaExpendedora {
     int fila,col;
 
     public MaquinaExpendedora() {
+        
+        fila=4;
+        col=4;
+        nombresGolosinas = new String[fila][col];
+        precio= new double[fila][col];
+        cantidad = new int[fila][col];
+        
+        for(int i=0;i<fila;i++){
+            
+            for(int j=0;j<col;j++){
+                
+                 nombresGolosinas [i][j]="";
+                 precio [i][j]=0;
+                 cantidad [i][j]=0;
+            }
+        }
         
         String[][] nombresG = {
         {"KitKat", "Chicles de fresa", "Lacasitos", "Palotes"},
@@ -35,20 +52,83 @@ public class MaquinaExpendedora {
         {5, 5, 5, 5}
 
         };
-        // inicializo las matrices
-        nombresGolosinas=nombresG;
-        precio=pre;
-        cantidad=cant;
-        fila=4;
-        col=4;
+        
+       this.nombresGolosinas=nombresG;
+       this.precio=pre;
+       this.cantidad=cant;
+        
+    }
+    
+    public String menu_pedirgolosinas(){
+        
+        String info="""
+                    Ingrese la posición de la golosina.
+                    00:KitKat
+                    01:chiles de fresa
+                    02:Lacasitos
+                    03:Palotes
+                    10:Kinder Bueno
+                    11:Bolsa varida Haribo
+                    12:Chetoos
+                    13:Twix
+                    20:Kinder Bueno
+                    21:M&M'S
+                    22:Papa Delta
+                    23:Chicles de menta
+                    30:Lacasitos
+                    31:Crunch
+                    32:Milkybar
+                    33KitKat
+                    """;
+        String posG=""; // posicion de la golosina
+        try{
+        posG= JOptionPane.showInputDialog(info);
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null,e);
+        }
+        
+        return posG;
     }
     
     
-    public void CargarDatos(DefaultTableModel modelo, int pfila,int pcol, int post){
+    public void pedirGolosinas(){
         
-        modelo.setValueAt(nombresGolosinas[pfila][pcol], post, 0);
-        modelo.setValueAt(precio[pfila][pcol], post, 1);
-        modelo.setValueAt(cantidad[pfila][pcol], post, 2);
+       String pos = menu_pedirgolosinas();
+       String fil="";
+       String colum="";
+       
+       /* 
+        el metodo charAt divide la variable
+       pos como si fuese un vector asi podemos almacenar el primer 
+       numero en la variable fila y el segundo en la varible col
+       para posterirmente poder buscar la posicion de la golosina 
+       en la matriz
+       */
+       
+       for(int i=0;i<2;i++){
+           
+           if(i==0){
+              fil= String.valueOf( pos.charAt(i));
+           } else if(i==1){
+               
+               colum= String.valueOf( pos.charAt(i));
+           }
+       }
+       
+       // convertimos las variables a entero para poder ubicar la pos de la golosina
+       
+       int f= Integer.parseInt(fil);
+       int c= Integer.parseInt(colum);
+       
+       if((cantidad[f][c])> 0){
+           
+           cantidad[f][c]--;
+           
+       } else{
+           
+           JOptionPane.showMessageDialog(null, " Lo sentimos la golosina que pidio esta agotada");
+       }
     }
     
     
@@ -65,13 +145,15 @@ public class MaquinaExpendedora {
         modelo.addColumn("Cantidad");
         
         for( i=0;i<fila;i++){
-            modelo.addRow(new Object[] {"","",""});
             
             for( j=0;j<col;j++){
                 
-                CargarDatos(modelo,i,j,post);
+                modelo.addRow(new Object[] {"","",""});
+                modelo.setValueAt(nombresGolosinas[i][j], post, 0);
+                modelo.setValueAt(precio[i][j], post, 1);
+                modelo.setValueAt(cantidad[i][j], post, 2);
+                post++;
             }
-            post++;
         }
         tabla.setModel(modelo);
     }      
