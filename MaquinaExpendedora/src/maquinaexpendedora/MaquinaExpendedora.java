@@ -15,19 +15,6 @@ public class MaquinaExpendedora {
         
         fila=4;
         col=4;
-        nombresGolosinas = new String[fila][col];
-        precio= new double[fila][col];
-        cantidad = new int[fila][col];
-        
-        for(int i=0;i<fila;i++){
-            
-            for(int j=0;j<col;j++){
-                
-                 nombresGolosinas [i][j]="";
-                 precio [i][j]=0;
-                 cantidad [i][j]=0;
-            }
-        }
         
         String[][] nombresG = {
         {"KitKat", "Chicles de fresa", "Lacasitos", "Palotes"},
@@ -81,32 +68,63 @@ public class MaquinaExpendedora {
                     33KitKat
                     """;
         String posG=""; // posicion de la golosina
-        try{
+
         posG= JOptionPane.showInputDialog(info);
-        }catch(Exception e){
-            
-            JOptionPane.showMessageDialog(null,e);
-        }
         
         return posG;
     }
     
     
     public void pedirGolosinas(){
+        String pos = menu_pedirgolosinas();
         
-       String pos = menu_pedirgolosinas();
-       String fil="";
-       String colum="";
-       
-       /* 
+            String fil = "";
+            String colum = "";
+
+            /* 
         el metodo charAt divide la variable
        pos como si fuese un vector asi podemos almacenar el primer 
        numero en la variable fila y el segundo en la varible col
        para posterirmente poder buscar la posicion de la golosina 
        en la matriz
-       */
-       
-       for(int i=0;i<2;i++){
+             */
+           try {
+            for (int i = 0; i < 2; i++) {
+
+                if (i == 0) {
+                    fil = String.valueOf(pos.charAt(i));
+                } else if (i == 1) {
+
+                    colum = String.valueOf(pos.charAt(i));
+                }
+            }
+
+            // convertimos las variables a entero para poder ubicar la pos de la golosina
+            int f = Integer.parseInt(fil);
+            int c = Integer.parseInt(colum);
+
+            if ((cantidad[f][c]) > 0) {
+
+                cantidad[f][c]--;
+                JOptionPane.showMessageDialog(null, "La golosina fue adquirida correctamente ! "
+                        + " quedan: " + cantidad[f][c]);
+
+            } else {
+
+                JOptionPane.showMessageDialog(null, " Lo sentimos la golosina que pidio esta agotada");
+            }
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    public void rellenarGolosina(String pos,int c){
+        
+        String fil="";
+        String colum="";
+        
+        for(int i=0;i<2;i++){
            
            if(i==0){
               fil= String.valueOf( pos.charAt(i));
@@ -115,20 +133,12 @@ public class MaquinaExpendedora {
                colum= String.valueOf( pos.charAt(i));
            }
        }
+        
+       int f1= Integer.parseInt(fil);
+       int c1= Integer.parseInt(colum);
        
-       // convertimos las variables a entero para poder ubicar la pos de la golosina
-       
-       int f= Integer.parseInt(fil);
-       int c= Integer.parseInt(colum);
-       
-       if((cantidad[f][c])> 0){
-           
-           cantidad[f][c]--;
-           
-       } else{
-           
-           JOptionPane.showMessageDialog(null, " Lo sentimos la golosina que pidio esta agotada");
-       }
+       cantidad[f1][c1]+=c;
+        
     }
     
     
