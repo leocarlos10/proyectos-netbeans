@@ -115,7 +115,7 @@ public class MaquinaExpendedora {
             }
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, " Error !! "+e);
         }
     }
     
