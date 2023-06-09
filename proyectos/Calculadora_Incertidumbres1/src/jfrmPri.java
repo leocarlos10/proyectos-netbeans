@@ -67,7 +67,7 @@ public class jfrmPri extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem2);
 
-        jMenuItem3.setText("calcular datos(promedio,desviacion,Incertidumbre)");
+        jMenuItem3.setText("calcular datos(promedio,desviacion)");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
