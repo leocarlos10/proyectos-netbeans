@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package maquinaexpendedora;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -99,9 +100,19 @@ public class JfMaq extends javax.swing.JFrame {
         jMenu2.add(jMenuItem5);
 
         jMenuItem6.setText("Eliminar golosina");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem6);
 
         jMenuItem7.setText("Limpiar Maquina");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem7);
 
         jMenuBar1.add(jMenu2);
@@ -141,6 +152,22 @@ public class JfMaq extends javax.swing.JFrame {
         obj.pedirGolosinas();
         obj.setllenarJTable(jTable1);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        boolean estado;
+        String pos="";
+       do{
+            pos=obj.menu_pedirgolosinas();
+            estado=obj.eliminarGolosina(pos);
+       }while(estado==false); // se va a seguir repitiendo mientras el usuario no dijite una posicion valida
+       JOptionPane.showMessageDialog(null," La golosina fue borrada correctamente");
+       obj.setllenarJTable(jTable1);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        obj.limpiarMaquina();
+        obj.limpiarJTable(jTable1);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,13 +5,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /*
-aun falta por agregar dos funcionalidades 
-estas las termino yo 
-eliminar golosina
-y Limpiar Maquina
-esta la terminas tu
-y tambien el ultimo punto de la guia
-
+aun falta por agregar el ultimo punto del trabajo 
 */
 
 public class MaquinaExpendedora {;;
@@ -150,6 +144,66 @@ public class MaquinaExpendedora {;;
        cantidad[f1][c1]+=c;
        JOptionPane.showMessageDialog(null, " se han agregado "+c+" golosinas a la casilla "+nombresGolosinas[f1][c1]);
         
+    }
+    
+    public boolean eliminarGolosina(String pos){
+        String fil = "";
+        String colum = "";
+        int f =0;
+        int c =0;
+        Exception band=null;
+        boolean band1=false;
+        try {
+            for (int i = 0; i < 2; i++) {
+
+                if (i == 0) {
+                    fil = String.valueOf(pos.charAt(i));
+                } else if (i == 1) {
+
+                    colum = String.valueOf(pos.charAt(i));
+                }
+            }
+
+            // convertimos las variables a entero para poder ubicar la pos de la golosina
+            f = Integer.parseInt(fil);
+            c = Integer.parseInt(colum);
+            
+        } catch (Exception e) {
+            band=e;
+             JOptionPane.showMessageDialog(null, "Error, por favor revise los datos de ingreso");
+             band1=false;
+        }
+        
+        if(band==null){
+            nombresGolosinas[f][c]="";
+            precio[f][c]=0;
+            cantidad[f][c]=0;
+            band1=true;
+        }
+        return band1;
+    }
+    
+    public void limpiarMaquina(){
+        
+        for(int i=0;i<fila;i++){
+            
+            for(int j=0;j<col;j++){
+                
+                nombresGolosinas[i][j]="";
+                precio[i][j]=0;
+                cantidad[i][j]=0;
+            }
+        }
+    }
+    
+    public void limpiarJTable(JTable tabla){
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn(" Nombre");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Cantidad");
+        tabla.setModel(modelo);
     }
     
     
