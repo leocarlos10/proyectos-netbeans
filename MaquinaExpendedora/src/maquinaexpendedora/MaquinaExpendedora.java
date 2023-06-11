@@ -6,7 +6,12 @@ import javax.swing.table.DefaultTableModel;
 
 /*
 aun falta por agregar dos funcionalidades 
+estas las termino yo 
 eliminar golosina
+y Limpiar Maquina
+esta la terminas tu
+y tambien el ultimo punto de la guia
+
 */
 
 public class MaquinaExpendedora {;;
