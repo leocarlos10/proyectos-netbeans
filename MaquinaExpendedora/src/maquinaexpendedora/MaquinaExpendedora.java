@@ -5,7 +5,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /*
-aun falta por agregar el ultimo punto del trabajo 
+por ultimo solo falta el ultimo punto del trabajo
+
 */
 
 public class MaquinaExpendedora {;;
