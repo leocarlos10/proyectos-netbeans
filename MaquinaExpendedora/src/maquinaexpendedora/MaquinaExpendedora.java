@@ -4,7 +4,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class MaquinaExpendedora {
+/*
+aun falta por agregar dos funcionalidades 
+eliminar golosina
+*/
+
+public class MaquinaExpendedora {;;
 
     String nombresGolosinas[][];
     double precio[][];
@@ -115,7 +120,7 @@ public class MaquinaExpendedora {
             }
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, " Error !! "+e);
+             JOptionPane.showMessageDialog(null, "Error, por favor revise los datos de ingreso"); 
         }
     }
     
