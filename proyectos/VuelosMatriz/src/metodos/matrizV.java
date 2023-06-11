@@ -11,8 +11,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ruben
  * colaboradores: leocarlos y moises
- * funciones por agregar 
- * mayor menor y todo lo demas.
+ * aun hacen falta hacer la verificacion de excepciones 
  */
 public class matrizV {
     
@@ -167,11 +166,48 @@ public class matrizV {
         }
     }
     
+    public void getdestinos_mayor_puesto(){
+        
+        int mayor=vuelos[0][0];
+        String nombre="";
+        
+        for(int i=0;i<tf;i++){
+            
+            for(int j=0;j<tc;j++){
+                
+                if(vuelos[i][j]>mayor){
+                    
+                    mayor=vuelos[i][j];
+                    nombre=nombresdest[i];
+                }
+            }
+        }
+        getMostrar("Destino con mayor numero de puestos ",mayor,nombre);
+    }
+    
+    public void getdestinos_menor_puesto(){
+        
+        int menor=vuelos[0][0];
+        String nombre_m="";
+        
+        for(int i=0;i<tf;i++){
+            
+            for(int j=0;j<tc;j++){
+                
+                if(vuelos[i][j]<menor){
+                    
+                    menor=vuelos[i][j];
+                    nombre_m=nombresdest[i];
+                }
+            }
+        }
+        getMostrar("Destino con menor numero de puestos ",menor,nombre_m);
+    }
+    
     
     public void setllenarJTable(JTable tabla){
         
         int i=0,j=0;
-       
         
         // creamos el modelo
         DefaultTableModel modelo = new DefaultTableModel();
@@ -191,15 +227,34 @@ public class matrizV {
         tabla.setModel(modelo);
     }
     
-    public void getMostrarTvuelos(){
-        String info = "Los datos de la matriz son: \n";
-        int i, j;
-        for(i=0; i<tf; i++){
-            for(j=0; j<tc; j++){
-                info += "[ "+vuelos[i][j]+" ]";
-            }
-            info += "\n";
-        }
-        JOptionPane.showMessageDialog(null, info);
+    public void seteliminar(){
+        
+       for(int i=0;i<tf;i++){
+           
+           nombresdest[i]="";
+           for(int j=0;j<tc;j++){
+               
+               vuelos[i][j]=0;
+           }
+       }
+    }
+    
+    public void setLimpiarJTable(JTable tabla){
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("Destinos");
+        modelo.addColumn("Mañana");
+        modelo.addColumn("Tarde");
+        modelo.addColumn("Noche");
+        
+        tabla.setModel(modelo);
+    }
+    
+    public void getMostrar(String inf, int estado, String nombre){
+        String info = inf+" \n";
+                      info+="- "+nombre+" = "+estado;
+        
+        JOptionPane.showMessageDialog(null,info);
     }
 }

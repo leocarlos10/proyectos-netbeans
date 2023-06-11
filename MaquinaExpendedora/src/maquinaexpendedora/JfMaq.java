@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 /**
  *
  * @ leocarlos y moises
+ * igual aqui mejor explicacion de los algoritmos.
  */
 public class JfMaq extends javax.swing.JFrame {
 

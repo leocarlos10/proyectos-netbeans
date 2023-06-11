@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
  *
  * @author leocarlos y moises
  * realizar una mejor explixacion de los algoritmos
+ * agregar cimentarios
  */
 public class jfrmlogin extends javax.swing.JFrame {
 
