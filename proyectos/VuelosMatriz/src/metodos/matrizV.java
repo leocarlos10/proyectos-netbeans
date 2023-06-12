@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package metodos;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -11,7 +8,6 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ruben
  * colaboradores: leocarlos y moises
- * aun hacen falta hacer la verificacion de excepciones 
  */
 public class matrizV {
     
@@ -20,33 +16,50 @@ public class matrizV {
     int tf, tc;
     
     matrizV(){
-        tf = Integer.parseInt(JOptionPane.showInputDialog(
-            "Entre cantidad de rutas disponibles: "));
-        tc = Integer.parseInt(JOptionPane.showInputDialog(
-            "Entre cantidad de jornadas disponibles (Mañana=1/Tarde=2/Noche=3): "));
+        Exception band=null;
         
-        nombresdest = new String[tf];
-        // inicializo la array de nombresdest
-        for(int e=0;e<tf;e++){
-            nombresdest[e]= JOptionPane.showInputDialog("entre el nombre del destino en la posición "+e);
+        try{
+            tf = Integer.parseInt(JOptionPane.showInputDialog(
+                "Entre cantidad de rutas disponibles: "));
+            tc = Integer.parseInt(JOptionPane.showInputDialog(
+                "Entre cantidad de jornadas disponibles (Mañana=1/Tarde=2/Noche=3): "));
+        }catch(Exception e){
+            band=e;
+         JOptionPane.showMessageDialog(null, " Error, por favor revise los datos de ingreso");
         }
-        
-        vuelos = new int[tf][tc];
-        //Cargamos la matriz con la cantidad de sillas disponibles
-        //para cada vuelo.
-        int i, j;
-        for(i=0; i<tf; i++){
-            for(j=0; j<tc; j++){
-                if(j==0){
-                    vuelos[i][j] = Integer.parseInt(JOptionPane.showInputDialog(
-                    "Entre el número de sillas para el vuelo "+i+" en la jornada Mañana: "));
-                }else if(j==1){
-                    vuelos[i][j] = Integer.parseInt(JOptionPane.showInputDialog(
-                    "Entre el número de sillas para el vuelo "+i+" en la jornada Tarde: "));
-                }else{
-                    vuelos[i][j] = Integer.parseInt(JOptionPane.showInputDialog(
-                    "Entre el número de sillas para el vuelo "+i+" en la jornada Noche: "));
+        // si no hay excepcion entra
+        if(band==null){
+            
+            Exception band1=null;
+            // de nuevo hacemos las verificaciones de los datos de entrada.
+            try{
+                nombresdest = new String[tf];
+                // inicializo la array de nombresdest
+                for(int e=0;e<tf;e++){
+                    nombresdest[e]= JOptionPane.showInputDialog("entre el nombre del destino en la posición "+e);
                 }
+
+                vuelos = new int[tf][tc];
+                //Cargamos la matriz con la cantidad de sillas disponibles
+                //para cada vuelo.
+                int i, j;
+                for(i=0; i<tf; i++){
+                    for(j=0; j<tc; j++){
+                        if(j==0){
+                            vuelos[i][j] = Integer.parseInt(JOptionPane.showInputDialog(
+                            "Entre el número de sillas para el vuelo "+i+" en la jornada Mañana: "));
+                        }else if(j==1){
+                            vuelos[i][j] = Integer.parseInt(JOptionPane.showInputDialog(
+                            "Entre el número de sillas para el vuelo "+i+" en la jornada Tarde: "));
+                        }else{
+                            vuelos[i][j] = Integer.parseInt(JOptionPane.showInputDialog(
+                            "Entre el número de sillas para el vuelo "+i+" en la jornada Noche: "));
+                        }
+                    }
+                }
+            }catch(Exception e){
+                band1=e;
+                JOptionPane.showMessageDialog(null, " Error, por favor revise los datos de ingreso");
             }
         }
     }
@@ -208,6 +221,7 @@ public class matrizV {
     public void setllenarJTable(JTable tabla){
         
         int i=0,j=0;
+        Exception band=null;
         
         // creamos el modelo
         DefaultTableModel modelo = new DefaultTableModel();
@@ -217,14 +231,20 @@ public class matrizV {
         modelo.addColumn("Tarde");
         modelo.addColumn("Noche");
         
-        for(i=0;i<tf;i++){
-            modelo.addRow(new Object[tc]);
-            modelo.setValueAt(nombresdest[i], i, 0);
-            for(j=0;j<tc;j++){
-                modelo.setValueAt(vuelos[i][j], (i), (j+1));
+        try{
+            for(i=0;i<tf;i++){
+                modelo.addRow(new Object[tc]);
+                modelo.setValueAt(nombresdest[i], i, 0);
+                for(j=0;j<tc;j++){
+                    modelo.setValueAt(vuelos[i][j], (i), (j+1));
+                }
             }
+        }catch(Exception e){
+            band=e;
         }
-        tabla.setModel(modelo);
+        // si no hubo excepcion se actualiza 
+        if(band==null)
+            tabla.setModel(modelo);
     }
     
     public void seteliminar(){
