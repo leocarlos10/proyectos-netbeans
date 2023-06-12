@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package maquinaexpendedora;
 
 import javax.swing.JOptionPane;
@@ -121,8 +118,7 @@ public class jfrmlogin extends javax.swing.JFrame {
                 cantidad=Integer.parseInt(JOptionPane.showInputDialog(" Digite la cantidad que desea ingresar"));
             }catch(Exception e){
                 band=e;// en el caso de existir una exepcion se agrega ala variable band
-                JOptionPane.showMessageDialog(null, "Error, por favor revise los datos de ingreso"); 
-                password.setText("");
+                JOptionPane.showMessageDialog(null, "Error, por favor revise los datos de ingreso");
                 password.requestFocus();
             }
             // verificamos si existe alguna excepción 
