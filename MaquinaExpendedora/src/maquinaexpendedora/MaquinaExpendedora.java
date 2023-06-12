@@ -14,7 +14,7 @@ public class MaquinaExpendedora {;;
     String nombresGolosinas[][];
     double precio[][];
     int cantidad[][];
-    int fila,col;
+    int fila,col;   
 
     public MaquinaExpendedora() {
         
@@ -44,7 +44,7 @@ public class MaquinaExpendedora {;;
         {5, 5, 5, 5}
 
         };
-        
+        // inicializo las matrices
        this.nombresGolosinas=nombresG;
        this.precio=pre;
        this.cantidad=cant;
@@ -81,19 +81,19 @@ public class MaquinaExpendedora {;;
     
     
     public void pedirGolosinas(){
-        String pos = menu_pedirgolosinas();
         
-            String fil = "";
-            String colum = "";
+        String pos = menu_pedirgolosinas();
+        String fil = "";
+        String colum = "";
 
-            /* 
-        el metodo charAt divide la variable
-       pos como si fuese un vector asi podemos almacenar el primer 
-       numero en la variable fila y el segundo en la varible col
-       para posterirmente poder buscar la posicion de la golosina 
-       en la matriz
+         /* 
+         el metodo charAt divide la variable
+         pos como si fuese un vector asi podemos almacenar el primer 
+         numero en la variable fila y el segundo en la varible col
+         para posterirmente poder buscar la posicion de la golosina
+         en la matriz
              */
-           try {
+        try {
             for (int i = 0; i < 2; i++) {
 
                 if (i == 0) {
@@ -112,10 +112,9 @@ public class MaquinaExpendedora {;;
 
                 cantidad[f][c]--;
                 JOptionPane.showMessageDialog(null, "La golosina "+nombresGolosinas[f][c]+" fue adquirida correctamente ! "
-                        + " quedan: " + cantidad[f][c]);
+                                                                + " quedan: " + cantidad[f][c]);
 
             } else {
-
                 JOptionPane.showMessageDialog(null, " Lo sentimos la golosina que pidio esta agotada");
             }
         } catch (Exception e) {
@@ -134,7 +133,6 @@ public class MaquinaExpendedora {;;
            if(i==0){
               fil= String.valueOf( pos.charAt(i));
            } else if(i==1){
-               
                colum= String.valueOf( pos.charAt(i));
            }
        }
@@ -148,12 +146,12 @@ public class MaquinaExpendedora {;;
     }
     
     public boolean eliminarGolosina(String pos){
-        String fil = "";
+        String fil = ""; 
         String colum = "";
         int f =0;
         int c =0;
-        Exception band=null;
-        boolean band1=false;
+        Exception band=null;// una bandera para saber si existe una excepcion o no
+        boolean band1=false;// una bandera para saber si se elimino la golosina correctamente
         try {
             for (int i = 0; i < 2; i++) {
 
@@ -170,16 +168,18 @@ public class MaquinaExpendedora {;;
             c = Integer.parseInt(colum);
             
         } catch (Exception e) {
+            // si hubo una excepcion se captura
             band=e;
-             JOptionPane.showMessageDialog(null, "Error, por favor revise los datos de ingreso");
-             band1=false;
+            JOptionPane.showMessageDialog(null, "Error, por favor revise los datos de ingreso");
+            band1=false;// guardamos en band falso ya que hubo una excepcion no elimino
         }
         
+        // si band es igual a nulo no hubo excepcion por los tanto se elimina la golosina.
         if(band==null){
             nombresGolosinas[f][c]="";
             precio[f][c]=0;
             cantidad[f][c]=0;
-            band1=true;
+            band1=true;// retornamos verdadero y que no hubo excepcion se elimino la golosina 
         }
         return band1;
     }
@@ -213,7 +213,6 @@ public class MaquinaExpendedora {;;
         int i =0, j=0;
         int post=0;
         
-        // creamos el modelo
         DefaultTableModel modelo = new DefaultTableModel();
         
         modelo.addColumn(" Nombre");
