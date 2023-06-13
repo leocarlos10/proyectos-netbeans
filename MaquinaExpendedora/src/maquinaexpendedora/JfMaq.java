@@ -35,7 +35,6 @@ public class JfMaq extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
 
         jMenu3.setText("jMenu3");
 
@@ -103,14 +102,6 @@ public class JfMaq extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem6);
 
-        jMenuItem7.setText("Limpiar Maquina");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem7);
-
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -145,7 +136,12 @@ public class JfMaq extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        obj.pedirGolosinas();
+        boolean estado=false;
+        do{
+            String pos=obj.menu_pedirgolosinas();
+            estado= obj.pedirGolosinas(pos);
+        }while(estado==false);
+        
         obj.setllenarJTable(jTable1);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -159,11 +155,6 @@ public class JfMaq extends javax.swing.JFrame {
        JOptionPane.showMessageDialog(null," La golosina fue borrada correctamente");
        obj.setllenarJTable(jTable1);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
-
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        obj.limpiarMaquina();
-        obj.limpiarJTable(jTable1);
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,7 +202,6 @@ public class JfMaq extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

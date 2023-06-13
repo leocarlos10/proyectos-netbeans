@@ -80,11 +80,13 @@ public class MaquinaExpendedora {;;
     }
     
     
-    public void pedirGolosinas(){
-        
-        String pos = menu_pedirgolosinas();
+    public boolean pedirGolosinas(String pos){
         String fil = "";
         String colum = "";
+        int f=0;
+        int c=0;
+        Exception band=null;
+        boolean band1=false;
 
          /* 
          el metodo charAt divide la variable
@@ -105,22 +107,26 @@ public class MaquinaExpendedora {;;
             }
 
             // convertimos las variables a entero para poder ubicar la pos de la golosina
-            int f = Integer.parseInt(fil);
-            int c = Integer.parseInt(colum);
-
+             f = Integer.parseInt(fil);
+             c = Integer.parseInt(colum);
+        } catch (Exception e) {
+            band=e;
+            JOptionPane.showMessageDialog(null, "Error, por favor revise los datos de ingreso"); 
+        }
+        
+        if(band==null){
+        
             if ((cantidad[f][c]) > 0) {
-
                 cantidad[f][c]--;
                 JOptionPane.showMessageDialog(null, "La golosina "+nombresGolosinas[f][c]+" fue adquirida correctamente ! "
-                                                                + " quedan: " + cantidad[f][c]);
-
+                                                                    + " quedan: " + cantidad[f][c]);
+                band1=true;
             } else {
-                JOptionPane.showMessageDialog(null, " Lo sentimos la golosina que pidio esta agotada");
+                    JOptionPane.showMessageDialog(null, " Lo sentimos la golosina que pidio esta agotada");
+                    band1=true;
             }
-        } catch (Exception e) {
-
-             JOptionPane.showMessageDialog(null, "Error, por favor revise los datos de ingreso"); 
         }
+        return band1;
     }
     
     public void rellenarGolosina(String pos,int c){
@@ -182,29 +188,6 @@ public class MaquinaExpendedora {;;
             band1=true;// retornamos verdadero y que no hubo excepcion se elimino la golosina 
         }
         return band1;
-    }
-    
-    public void limpiarMaquina(){
-        
-        for(int i=0;i<fila;i++){
-            
-            for(int j=0;j<col;j++){
-                
-                nombresGolosinas[i][j]="";
-                precio[i][j]=0;
-                cantidad[i][j]=0;
-            }
-        }
-    }
-    
-    public void limpiarJTable(JTable tabla){
-        
-        DefaultTableModel modelo = new DefaultTableModel();
-        
-        modelo.addColumn(" Nombre");
-        modelo.addColumn("Precio");
-        modelo.addColumn("Cantidad");
-        tabla.setModel(modelo);
     }
     
     

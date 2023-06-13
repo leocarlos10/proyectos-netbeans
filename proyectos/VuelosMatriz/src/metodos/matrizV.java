@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ruben
  * colaboradores: leocarlos y moises
+ * podria meterle mas metodos 
  */
 public class matrizV {
     

@@ -57,7 +57,7 @@ public class jfrmPri extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("ingreso de datos");
+        jMenu2.setText("Opciones");
 
         jMenuItem2.setText("ingresar tiempos");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
