@@ -5,7 +5,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /*
-por ultimo solo falta mostrar el total acumulado de las ventas.
+autores: leocarlos y moises.
 */
 
 public class MaquinaExpendedora {;;
@@ -14,7 +14,8 @@ public class MaquinaExpendedora {;;
     double precio[][];
     int cantidad[][];
     int fila,col;   
-
+    int f,c; // variables para poder saber la posición de la golosina comprada y poder sumar su precio.
+    
     public MaquinaExpendedora() {
         
         fila=4;
@@ -120,6 +121,8 @@ public class MaquinaExpendedora {;;
                 JOptionPane.showMessageDialog(null, "La golosina "+nombresGolosinas[f][c]+" fue adquirida correctamente ! "
                                                                     + " quedan: " + cantidad[f][c]);
                 band1=true;
+                this.f=f;
+                this.c=c;
                 
             } else {
                     JOptionPane.showMessageDialog(null, " Lo sentimos la golosina que pidio esta agotada");
@@ -149,45 +152,6 @@ public class MaquinaExpendedora {;;
        cantidad[f1][c1]+=c;
        JOptionPane.showMessageDialog(null, " se han agregado "+c+" golosinas a la casilla "+nombresGolosinas[f1][c1]);
         
-    }
-    
-    public boolean eliminarGolosina(String pos){
-        String fil = ""; 
-        String colum = "";
-        int f =0;
-        int c =0;
-        Exception band=null;// una bandera para saber si existe una excepcion o no
-        boolean band1=false;// una bandera para saber si se elimino la golosina correctamente
-        try {
-            for (int i = 0; i < 2; i++) {
-
-                if (i == 0) {
-                    fil = String.valueOf(pos.charAt(i));
-                } else if (i == 1) {
-
-                    colum = String.valueOf(pos.charAt(i));
-                }
-            }
-
-            // convertimos las variables a entero para poder ubicar la pos de la golosina
-            f = Integer.parseInt(fil);
-            c = Integer.parseInt(colum);
-            
-        } catch (Exception e) {
-            // si hubo una excepcion se captura
-            band=e;
-            JOptionPane.showMessageDialog(null, "Error, por favor revise los datos de ingreso");
-            band1=false;// guardamos en band falso ya que hubo una excepcion no elimino
-        }
-        
-        // si band es igual a nulo no hubo excepcion por los tanto se elimina la golosina.
-        if(band==null){
-            nombresGolosinas[f][c]="";
-            precio[f][c]=0;
-            cantidad[f][c]=0;
-            band1=true;// retornamos verdadero y que no hubo excepcion se elimino la golosina 
-        }
-        return band1;
     }
     
     
