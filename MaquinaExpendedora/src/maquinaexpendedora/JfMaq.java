@@ -11,11 +11,13 @@ import javax.swing.JOptionPane;
 public class JfMaq extends javax.swing.JFrame {
 
     MaquinaExpendedora obj;
+    int cantidad;// variable para almacenar la cantidad de golosinas vendidas
     
     public JfMaq() {
         initComponents();
         setLocationRelativeTo(null);
         obj = new MaquinaExpendedora();
+        cantidad=0;
     }
 
     
@@ -92,6 +94,11 @@ public class JfMaq extends javax.swing.JFrame {
         jMenu2.add(jMenuItem4);
 
         jMenuItem5.setText("Estadisticas de máquina");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem5);
 
         jMenuItem6.setText("Eliminar golosina");
@@ -141,7 +148,9 @@ public class JfMaq extends javax.swing.JFrame {
             String pos=obj.menu_pedirgolosinas();
             estado= obj.pedirGolosinas(pos);
         }while(estado==false);
-        
+        // cuando sale del bucle while quiere decir que la golosina fue vendida por lo tanto 
+        // aumentamos la cantidad en 1.
+        cantidad++;
         obj.setllenarJTable(jTable1);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -155,6 +164,12 @@ public class JfMaq extends javax.swing.JFrame {
        JOptionPane.showMessageDialog(null," La golosina fue borrada correctamente");
        obj.setllenarJTable(jTable1);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+       // mostramos la cantidad de golosinas vendidas.
+        JOptionPane.showMessageDialog(null, " La cantidad de golosinas vendidas fue de "+cantidad);
+        
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments

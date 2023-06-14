@@ -5,8 +5,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /*
-por ultimo solo falta el ultimo punto del trabajo
-
+por ultimo solo falta mostrar el total acumulado de las ventas.
 */
 
 public class MaquinaExpendedora {;;
@@ -121,6 +120,7 @@ public class MaquinaExpendedora {;;
                 JOptionPane.showMessageDialog(null, "La golosina "+nombresGolosinas[f][c]+" fue adquirida correctamente ! "
                                                                     + " quedan: " + cantidad[f][c]);
                 band1=true;
+                
             } else {
                     JOptionPane.showMessageDialog(null, " Lo sentimos la golosina que pidio esta agotada");
                     band1=true;
