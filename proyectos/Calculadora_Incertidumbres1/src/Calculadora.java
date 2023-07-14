@@ -146,7 +146,6 @@ public class Calculadora {
        this.desviacion=desviacionest;
     }
     
- 
     
     public void cargarDatos(DefaultTableModel modelo,int posv,int ptabla){
         
@@ -178,6 +177,30 @@ public class Calculadora {
         tabla.setModel(modelo);
     }
     
+    public void limpiarM(){
+        
+       for(int i=0;i<col;i++){
+           
+           promedio[i]=0;
+           desviacion[i]=0;
+           nombrestiempo[i]="";
+           
+            for(int j=0;j<filas;j++){
+                
+                tiempos[i][j]=0;
+            }
+        }
+    }
     
-    
+    public void limpiarJTable(JTable tabla){
+        
+         DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("Tiempos");
+        modelo.addColumn("Promedio");
+        modelo.addColumn("desviacion estandar");
+        
+        tabla.setModel(modelo); 
+        
+    }
 }
