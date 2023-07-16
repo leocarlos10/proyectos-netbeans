@@ -66,7 +66,7 @@ public class misUsuarios {
         
         }catch(IOException e){
             
-            JOptionPane.showMessageDialog(null, " En este momento no se ecnuentran usuarios registrados");
+            JOptionPane.showMessageDialog(null, " En este momento no se encuentran usuarios guardados");
         }     
     }
     

@@ -21,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -29,7 +30,9 @@ import javafx.stage.Stage;
 /**
  *
  * @author Leocarlos
- * 
+ * primer crud con java terminado implementando javafx y poo 
+ * ademas de implementar ficheros. para guardar los datos
+ * y que no se pierdan al terminar el programa.
  */
 public class Loginjavafx extends Application {
     // creamos una variable de tipo misUsuarios para poder comunicarnos
@@ -64,9 +67,11 @@ public class Loginjavafx extends Application {
 
         TextField textnombre = new TextField();
         textnombre.setMaxWidth(150);
+        textnombre.setPromptText("Ingrese el nombre");
 
         TextField textuser = new TextField();
         textuser.setMaxWidth(150);
+        textuser.setPromptText("Ingrese el usuario");
 
         PasswordField password = new PasswordField();
         password.setMaxWidth(150);
@@ -119,6 +124,7 @@ public class Loginjavafx extends Application {
         
         // contenedor derecho
         VBox containerRigth = new VBox();
+        
         Button limpiar = new Button("Limpiar tabla");
         limpiar.setCursor(Cursor.HAND);
         limpiar.setPrefWidth(150);
@@ -145,6 +151,7 @@ public class Loginjavafx extends Application {
         inf = new TextArea();
         inf.setPrefWidth(300);
         inf.setPrefHeight(200);
+        inf.setEditable(false);
         contenedor.getChildren().add(inf);
         containerRigth.getChildren().addAll(label1,contenedor,limpiar,mostrarU,btneliminar);
         containerRigth.setMargin(contenedor, new Insets(0, 30, 0, 30));
@@ -153,6 +160,9 @@ public class Loginjavafx extends Application {
         
         HBox root = new HBox();
         root.getChildren().addAll(containerleft,containerRigth);
+        // esto se le agrega para que cuando el usuario amplie la pantalla los nodos tambien se amplien.
+        HBox.setHgrow(containerleft,Priority.ALWAYS);
+        HBox.setHgrow(containerRigth, Priority.ALWAYS);
         Scene scene = new Scene(root, 630, 440);
 
         objStage.setTitle("Proyecto 1");
