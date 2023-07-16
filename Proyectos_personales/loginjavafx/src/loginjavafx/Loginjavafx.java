@@ -75,6 +75,8 @@ public class Loginjavafx extends Application {
 
         PasswordField password = new PasswordField();
         password.setMaxWidth(150);
+        password.setPromptText("ingrese la contraseña");
+        
         Button btnlogin = new Button("ingresar");
         // cambiando la anchura del boton
         btnlogin.setMaxWidth(341);
@@ -105,6 +107,7 @@ public class Loginjavafx extends Application {
         // cierro contenedor de login
         login.getChildren().addAll(labelnom,textnombre,labeluser,textuser,labelpass,password,btnlogin, btnguardar);
         login.setAlignment(Pos.CENTER);
+        // le damos margenes a los componentes del login.
         VBox.setMargin(labelnom, new Insets(10, 0, 0, 0));
         VBox.setMargin(login, new Insets(10, 0, 0, 0));
         VBox.setMargin(login, new Insets(10, 0, 0, 0));
@@ -118,7 +121,9 @@ public class Loginjavafx extends Application {
         containerleft.getChildren().addAll(logo,ingreso,login);
         //metodo para centrar los nodos
         containerleft.setAlignment(Pos.CENTER);
+        // le damos un ancho a este contenedor
         containerleft.setPrefWidth(250);
+        // le damos margenes de izquierda y derecha a el contenedor de login.
         VBox.setMargin(login, new Insets(0, 60, 0, 60));
         
         
