@@ -26,12 +26,15 @@ import javax.swing.JOptionPane;
  */
 public class controller3 implements Initializable {
     
+    controller1 obj;
+    
     @FXML
     private Button btnvolver;
     
     @FXML
     private void eventoVolver(ActionEvent event){
-        loadStage("/view/viewlogin.fxml", event);
+        obj = new controller1();
+        obj.loadStage("/view/viewlogin.fxml", event);
     }
     
     @Override
@@ -39,6 +42,7 @@ public class controller3 implements Initializable {
       btnvolver.setCursor(Cursor.HAND);
     }
     
+    /*
     private void loadStage(String url, Event event) {
         try{
             
@@ -58,4 +62,5 @@ public class controller3 implements Initializable {
             
         }
      }
+*/
 }

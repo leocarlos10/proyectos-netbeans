@@ -21,7 +21,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import javax.swing.JOptionPane;
 
 /**
@@ -117,11 +116,11 @@ public class controller1 implements Initializable {
     
     
     // metodo para cambiar de scene.
-    private void loadStage(String url, Event event) {
+    public void loadStage(String url, Event event) {
         try{
             
             // obtenemos el evento, para luego obtener la scene y la ventana anterior
-            Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+            Stage stage = (Stage)((Node) (event.getSource())).getScene().getWindow();
             /*
             esta es de la forma larga
             ---------------------------
@@ -151,7 +150,6 @@ public class controller1 implements Initializable {
         }catch(IOException e){
             
             JOptionPane.showMessageDialog(null, e,"Error",JOptionPane.ERROR_MESSAGE);
-            
         }
      }
 }

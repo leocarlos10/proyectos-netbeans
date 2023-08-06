@@ -5,6 +5,7 @@
 package loginjavafx;
 
 
+import loginjavafx.models.com.misUsuarios;
 import java.io.InputStream;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -25,6 +26,9 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
+import loginjavafx.models.com.Usuario;
+import loginjavafx.models.com.dao.usuarioDAO;
 
 
 /**
@@ -33,13 +37,19 @@ import javafx.stage.Stage;
  * primer crud con java terminado implementando javafx y poo 
  * ademas de implementar ficheros. para guardar los datos
  * y que no se pierdan al terminar el programa.
+ * 
+ * modificacion del 2/agosto/2023 
+ * al fin logramos agregarle bases de datos al programa.
+ * 
+ * Proyecto finalizado.
  */
 public class Loginjavafx extends Application {
     // creamos una variable de tipo misUsuarios para poder comunicarnos
     
      misUsuarios user = new misUsuarios();
      TextArea inf;
-    
+     usuarioDAO dao = new usuarioDAO();
+     
     @Override
     public void start(Stage objStage){
         
@@ -88,22 +98,32 @@ public class Loginjavafx extends Application {
             public void handle(ActionEvent event) {
 
                user.setUsurio(textuser, password, textnombre);
+               user.setTextA(inf);
                textnombre.setText("");
                textuser.setText("");
                password.setText("");
                textnombre.requestFocus();
-               user.mostrar(inf);
+               
             }
         });
         
         
-        Button btnguardar = new Button("Guardar usuarios");
+        Button btnguardar = new Button("guardar usuarios");
         btnguardar.setMaxWidth(341);
         btnguardar.setCursor(Cursor.HAND);
         // creamos el evento 
         btnguardar.setOnAction((v) -> {
-            user.guardarinfo(user.mostrar());
+            boolean band=false;
+            for(int i=0;i<user.lista.size();i++){
+                 band = dao.agregar(user.getUser(i));
+            }
+            if(band!=true){
+                JOptionPane.showMessageDialog(null, "Error al guardar los usuarios");
+            }else{
+                JOptionPane.showMessageDialog(null, "Los usuarios se guardaron correctamente");
+            } 
         });
+        
         // cierro contenedor de login
         login.getChildren().addAll(labelnom,textnombre,labeluser,textuser,labelpass,password,btnlogin, btnguardar);
         login.setAlignment(Pos.CENTER);
@@ -141,15 +161,28 @@ public class Loginjavafx extends Application {
         mostrarU.setCursor(Cursor.HAND);
         mostrarU.setPrefWidth(170);
         // nuevafomra de hacer los eventos de los botones.
-        mostrarU.setOnAction((e)->{user.mostrarUsuariosG(inf);});
+        
+        mostrarU.setOnAction((e)->{
+            user.setuser(dao.listar());
+            user.setTextA_DB(inf);
+        });
+        
         VBox.setMargin(mostrarU, new Insets(10, 0, 0, 0));
         
-        Button btneliminar = new Button("Eliminar usuarios guardados");
+        Button btneliminar = new Button("Eliminar usuario");
         btneliminar.setCursor(Cursor.HAND);
         btneliminar.setPrefWidth(170);
         //evento
-        btneliminar.setOnAction((a)->{user.eliminarusuariosG();});
+        
+        btneliminar.setOnAction((a)->{
+           
+            Usuario u = user.getUser();
+            dao.eliminarUser(u);
+            // por ulitmo actualizamos la lista.
+             user.setTextA_DB(inf);
+        });
         VBox.setMargin(btneliminar, new Insets(10, 0, 0, 0));
+        
         
         StackPane contenedor = new StackPane();
         Label label1 = new Label("Datos de los usuarios");

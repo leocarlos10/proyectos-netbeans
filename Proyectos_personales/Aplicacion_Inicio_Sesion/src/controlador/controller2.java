@@ -30,7 +30,8 @@ import javax.swing.JOptionPane;
  */
 public class controller2 implements Initializable {
     
-    misUsuarios users; 
+    misUsuarios users;
+    controller1  obj = new controller1();
     
      @FXML
     private TextField textuser2;
@@ -77,7 +78,7 @@ public class controller2 implements Initializable {
                 // guardo la info del Usuario en el fichero.
                 users.guardarinfo(users.lista.get(0).mostrar());
                 // muestro el inicio de sesion principal.
-                loadStage("/view/viewlogin.fxml", event);
+                obj.loadStage("/view/viewlogin.fxml", event);
             }else{
                 
                 JOptionPane.showMessageDialog(null, " por favor revise los datos de ingreso ", "Error", JOptionPane.ERROR_MESSAGE);
@@ -88,8 +89,7 @@ public class controller2 implements Initializable {
     
     @FXML
     private void eventVolver(ActionEvent event){
-        
-        loadStage("/view/viewlogin.fxml", event);
+        obj.loadStage("/view/viewlogin.fxml", event);
     }
     
     @Override
@@ -97,6 +97,7 @@ public class controller2 implements Initializable {
       btningresar2.setCursor(Cursor.HAND);
     }
     
+    /*
     private void loadStage(String url, Event event) {
         try{
             
@@ -114,7 +115,7 @@ public class controller2 implements Initializable {
             Window window = oldscene.getWindow();
             por ultimo cambiar de ventana o esto ya depende de el gusto cerrar la ventana.
             Stage stage = (Stage) window;
-            */
+            
             Parent root = FXMLLoader.load(getClass().getResource(url));
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -125,7 +126,7 @@ public class controller2 implements Initializable {
             Stage newstage = new Stage();
             newstage.setScene(scene);
             newstage.show();
-            */
+            
             
         }catch(IOException e){
             
@@ -133,4 +134,6 @@ public class controller2 implements Initializable {
             
         }
      }
+*/
+    
 }
