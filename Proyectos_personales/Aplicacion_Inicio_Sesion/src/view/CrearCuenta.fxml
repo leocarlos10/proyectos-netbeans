@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.controller2">
+   <children>
+      <Label contentDisplay="TOP" prefHeight="137.0" prefWidth="120.0" text="Crea Tu Cuenta" textFill="#1e0202">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="114.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/logo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
+      </Label>
+      <VBox alignment="CENTER" maxHeight="250.0" maxWidth="500.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label prefHeight="17.0" prefWidth="66.0" text="Usuario">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="textuser2" maxWidth="300.0" onKeyTyped="#eventkey2" promptText="Ingrese el Usuario" />
+            <Label prefHeight="19.0" prefWidth="73.0" text="Contraseña">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <PasswordField fx:id="password2" maxWidth="300.0" onKeyTyped="#eventkey2" promptText="Ingrese la contraseña" />
+            <Button fx:id="btningresar2" maxWidth="300.0" mnemonicParsing="false" onAction="#evento1" text="ingresar">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="volver" maxWidth="300.0" mnemonicParsing="false" onAction="#eventVolver" text="Volver">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets bottom="20.0" left="60.0" right="60.0" top="5.0" />
+         </VBox.margin>
+      </VBox>
+   </children>
+</VBox>

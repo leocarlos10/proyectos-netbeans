@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.controller1">
+   <children>
+      <VBox prefHeight="485.0" prefWidth="344.0" HBox.hgrow="ALWAYS">
+         <children>
+            <Label prefHeight="27.0" prefWidth="170.0" text="INICIO DE SESION">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="90.0" top="130.0" />
+               </VBox.margin>
+            </Label>
+            <VBox prefHeight="224.0" prefWidth="284.0" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets left="30.0" right="30.0" />
+               </VBox.margin>
+               <children>
+                  <Label prefHeight="17.0" prefWidth="66.0" text="Usuario">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="textuser" onKeyTyped="#eventKey" promptText="Ingrese el Usuario" />
+                  <Label prefHeight="19.0" prefWidth="74.0" text="Contraseña">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <PasswordField fx:id="password" onKeyTyped="#eventKey" promptText="Ingrese la contraseña" />
+                  <Button fx:id="btningresar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#ActionEvent" text="Ingresar">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Label prefHeight="17.0" prefWidth="165.0" text="No tienes una Cuenta ?">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Button fx:id="btnCrearC" mnemonicParsing="false" onAction="#eventoCrearC" prefHeight="25.0" prefWidth="168.0" text="Crear Cuenta">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="506.0" prefWidth="347.0" style="-fx-background-color: #30373e;" HBox.hgrow="ALWAYS">
+         <children>
+            <ImageView fitHeight="287.0" fitWidth="319.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin>
+               <image>
+                  <Image url="@../image/logo.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </children>
+</HBox>
