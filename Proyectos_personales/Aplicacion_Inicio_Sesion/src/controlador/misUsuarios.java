@@ -4,29 +4,57 @@
  */
 package controlador;
 
-import java.io.*;
-import java.io.FileWriter;
-import java.io.IOException;
+//import java.io.*;
+//import java.io.FileWriter;
+//import java.io.IOException;
+import ConexionDAO.usuarioDAO;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+//import java.util.Scanner;
 import javafx.scene.control.TextField;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 /**
  *
- * @author USUARIO
+ * @author Leocarlos
  */
 public class misUsuarios {
     
     List<Usuario> lista = new ArrayList<>();
+    usuarioDAO dao = new usuarioDAO();
+    
 
     public void setUsurio(TextField u, TextField pass) {
 
         lista.add(new Usuario(u.getText(), pass.getText()));
     }
     
+    public Usuario getUser(){
+        
+       Usuario u = lista.get(0);
+       lista.remove(0);
+       return u;
+    }
+    
+    public boolean Verf_user(String u,String pass){
+        
+        // en esta lista estan todos los usuario obtenidos de la base de datos.
+        List<Usuario> users = dao.getUserAll();
+        
+        // si encuentra una linea parecida retorna true
+       for(int i=0;i<users.size();i++){
+           
+           if(users.get(i).getUser().equals(u) && users.get(i).getPass().equals(pass))
+               return true;
+       }
+       return false;
+    }
+    
+}
+
+ // documentacion de ficheros.
     // metodo para guardar los datos de los usuarios en el fichero.
+    /*
     public void guardarinfo(String inf){
         
         try{
@@ -53,7 +81,7 @@ public class misUsuarios {
             /*
             utilizo el scanner para guardar linea por linea y asi en cada linea
             verificar el usuario y la contraseña.
-            */
+            
             Scanner scanner = new Scanner(archivo);
             // mientras halla lineas por leer el va a seguir leeyendo.
             while (scanner.hasNextLine()) {
@@ -86,4 +114,4 @@ public class misUsuarios {
        }
        return false;
     }
-}
+*/

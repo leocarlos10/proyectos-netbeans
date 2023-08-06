@@ -4,23 +4,17 @@
  */
 package controlador;
 
-import java.io.IOException;
+import ConexionDAO.usuarioDAO;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,6 +26,7 @@ public class controller2 implements Initializable {
     
     misUsuarios users;
     controller1  obj = new controller1();
+    usuarioDAO dao = new usuarioDAO();
     
      @FXML
     private TextField textuser2;
@@ -75,12 +70,11 @@ public class controller2 implements Initializable {
                 users = new misUsuarios();
                 // agrego el usuario a la lista
                 users.setUsurio(textuser2,password2);
-                // guardo la info del Usuario en el fichero.
-                users.guardarinfo(users.lista.get(0).mostrar());
+                // guardo la info del Usuario en la base de datos.
+                dao.agregar(users.getUser());
                 // muestro el inicio de sesion principal.
                 obj.loadStage("/view/viewlogin.fxml", event);
             }else{
-                
                 JOptionPane.showMessageDialog(null, " por favor revise los datos de ingreso ", "Error", JOptionPane.ERROR_MESSAGE);
             }
             

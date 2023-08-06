@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Aplicacion_Inicio_Sesion.jar" size="48252" download="eager" />
+    <jar href="Aplicacion_Inicio_Sesion.jar" size="49953" download="eager" />
     <jar href="lib\javafx-swt.jar" size="37119" download="eager" />
     <jar href="lib\javafx.base.jar" size="755038" download="eager" />
     <jar href="lib\javafx.controls.jar" size="2577983" download="eager" />
@@ -17,6 +17,7 @@
     <jar href="lib\javafx.media.jar" size="278549" download="eager" />
     <jar href="lib\javafx.swing.jar" size="89688" download="eager" />
     <jar href="lib\javafx.web.jar" size="727749" download="eager" />
+    <jar href="lib\mysql-connector-j-8.1.0.jar" size="2485905" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="aplicacion_inicio_sesion.main_Inicio_sesion"  name="Aplicacion_Inicio_Sesion" />
   <update check="always"/>

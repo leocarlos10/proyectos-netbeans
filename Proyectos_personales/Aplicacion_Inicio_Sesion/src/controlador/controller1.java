@@ -70,7 +70,8 @@ public class controller1 implements Initializable {
         Object ev = event.getSource();
         
         // esta parte de aqui no es necesaria esto es para cuando tenemos varios botones con el mismo nombre de evento.
-        if(ev.equals(btningresar)){ 
+        if(ev.equals(btningresar)){
+            
             // en este condicional verificamos si los campos de textos no estan vacios.
             if(!textuser.getText().isEmpty() && !password.getText().isEmpty()){
                 users = new misUsuarios();
@@ -102,12 +103,15 @@ public class controller1 implements Initializable {
             }
         }
     }
+    
+    
     // evento para crear una nueva cuenta
     @FXML
     private void eventoCrearC(ActionEvent event){
         
         loadStage("/view/CrearCuenta.fxml", event);
     }
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
