@@ -69,11 +69,12 @@ public class controller2 implements Initializable {
                 // instancio la variable
                 users = new misUsuarios();
                 // agrego el usuario a la lista
-                users.setUsurio(textuser2,password2);
+                users.setUsuario(textuser2.getText(),password2.getText());
                 // guardo la info del Usuario en la base de datos.
                 dao.agregar(users.getUser());
                 // muestro el inicio de sesion principal.
                 obj.loadStage("/view/viewlogin.fxml", event);
+                users.lista.clear();
             }else{
                 JOptionPane.showMessageDialog(null, " por favor revise los datos de ingreso ", "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -92,6 +93,7 @@ public class controller2 implements Initializable {
     }
     
     /*
+    Documentacion del metodo encargado para el cambio de las escenes.
     private void loadStage(String url, Event event) {
         try{
             

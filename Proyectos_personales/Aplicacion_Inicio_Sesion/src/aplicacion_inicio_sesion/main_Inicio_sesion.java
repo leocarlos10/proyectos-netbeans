@@ -11,25 +11,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ConexionDAO.usuarioDAO;
+
 /**
  *
  * @author Leocarlos
  * 
  * modificacion del 6/08/2023
  * logramos agregarle bases de datos a la aplicacion de inicio de sesion.
+ *
+ * modificacion del 16/08/2023
+ * logramos completar el proyecto.
  */
 public class main_Inicio_sesion extends Application {
     
-    usuarioDAO dao;
-    
-    // este metodo es el encargado de realizar la conexion 
-    // con la base de datos al momento de que se inicie la aplicacion;
-    @Override
-    public void init(){
-        dao = new usuarioDAO();
-        dao.conectar();
-    }
+   
     
     @Override
     public void start(Stage primaryStage) throws IOException {

@@ -3,16 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controlador;
-
-//import java.io.*;
-//import java.io.FileWriter;
-//import java.io.IOException;
 import ConexionDAO.usuarioDAO;
 import java.util.ArrayList;
 import java.util.List;
-//import java.util.Scanner;
-import javafx.scene.control.TextField;
-//import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,10 +16,9 @@ public class misUsuarios {
     List<Usuario> lista = new ArrayList<>();
     usuarioDAO dao = new usuarioDAO();
     
+    public void setUsuario(String u, String pass) {
 
-    public void setUsurio(TextField u, TextField pass) {
-
-        lista.add(new Usuario(u.getText(), pass.getText()));
+        lista.add(new Usuario(u, pass));
     }
     
     public Usuario getUser(){
@@ -39,16 +31,18 @@ public class misUsuarios {
     public boolean Verf_user(String u,String pass){
         
         // en esta lista estan todos los usuario obtenidos de la base de datos.
-        List<Usuario> users = dao.getUserAll();
+        lista.addAll(dao.getUserAll());
         
-        // si encuentra una linea parecida retorna true
-       for(int i=0;i<users.size();i++){
+        // si el usuario y contrasena son validos retorna true;
+       for(int i=0;i<lista.size();i++){
            
-           if(users.get(i).getUser().equals(u) && users.get(i).getPass().equals(pass))
+           if(lista.get(i).getUser().equals(u) && lista.get(i).getPass().equals(pass))
                return true;
        }
+       lista.clear();
        return false;
     }
+    
     
 }
 

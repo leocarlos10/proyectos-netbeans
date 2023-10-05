@@ -52,15 +52,15 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="volver" maxWidth="300.0" mnemonicParsing="false" onAction="#eventVolver" text="Volver">
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </Button>
          </children>
          <VBox.margin>
             <Insets bottom="20.0" left="60.0" right="60.0" top="5.0" />
          </VBox.margin>
       </VBox>
+      <Button fx:id="volver" mnemonicParsing="false" onAction="#eventVolver" prefWidth="60.0" text="Volver">
+         <VBox.margin>
+            <Insets right="550.0" top="10.0" />
+         </VBox.margin>
+      </Button>
    </children>
 </VBox>

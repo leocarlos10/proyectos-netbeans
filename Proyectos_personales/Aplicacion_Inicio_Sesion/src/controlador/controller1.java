@@ -4,6 +4,7 @@
  */
 package controlador;
 
+import ConexionDAO.usuarioDAO;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,7 +32,8 @@ import javax.swing.JOptionPane;
 public class controller1 implements Initializable {
     
     misUsuarios users;
-    
+    usuarioDAO dao;
+   
     @FXML
     private TextField textuser;
     
@@ -41,6 +43,7 @@ public class controller1 implements Initializable {
     @FXML 
     private Button btningresar;
     
+   
     // verificacion de campos de texto.
     @FXML
     private void eventKey(KeyEvent event){
@@ -68,13 +71,12 @@ public class controller1 implements Initializable {
     private void ActionEvent(ActionEvent event){
         
         Object ev = event.getSource();
-        
         // esta parte de aqui no es necesaria esto es para cuando tenemos varios botones con el mismo nombre de evento.
         if(ev.equals(btningresar)){
             
             // en este condicional verificamos si los campos de textos no estan vacios.
             if(!textuser.getText().isEmpty() && !password.getText().isEmpty()){
-                users = new misUsuarios();
+                 users = new misUsuarios();
                 String user = textuser.getText();
                 String pass = password.getText();
                boolean estado = users.Verf_user(user, pass);
@@ -82,7 +84,8 @@ public class controller1 implements Initializable {
                // si encuentra el usuario y contraseña ingresa de lo contrario 
                // muestra una pantalla de error.
                if(estado == true){
-                  loadStage("/view/viewBienvenida.fxml", event);
+                 
+                  loadStage("/view/gestor_pass.fxml", event,"Gestiona tus contraseñas");
                }else{
                    
                    JOptionPane.showMessageDialog(null, " Contraseña Incorrecta ",
@@ -109,13 +112,13 @@ public class controller1 implements Initializable {
     @FXML
     private void eventoCrearC(ActionEvent event){
         
-        loadStage("/view/CrearCuenta.fxml", event);
+        loadStage("/view/CrearCuenta.fxml", event,"Crea Tu Cuenta");
     }
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        btningresar.setCursor(Cursor.HAND);
+        btningresar.setCursor(Cursor.HAND); 
     } 
     
     
@@ -150,6 +153,26 @@ public class controller1 implements Initializable {
             newstage.setScene(scene);
             newstage.show();
             */
+            
+        }catch(IOException e){
+            
+            JOptionPane.showMessageDialog(null, e,"Error",JOptionPane.ERROR_MESSAGE);
+        }
+     }
+    
+    // este es el mismo metedo anterior solo que en este se le puede poner un titulo personalizado.
+     public void loadStage(String url, Event event,String title) {
+        try{
+            
+            // obtenemos el evento, para luego obtener la scene y la ventana anterior
+            Stage stage = (Stage)((Node) (event.getSource())).getScene().getWindow();
+          
+            Parent root = FXMLLoader.load(getClass().getResource(url));
+            Scene scene = new Scene(root);
+            stage.setTitle(title); 
+            stage.setScene(scene);
+            
+            
             
         }catch(IOException e){
             

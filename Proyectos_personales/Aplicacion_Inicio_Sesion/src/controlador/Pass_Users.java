@@ -8,25 +8,43 @@ package controlador;
  *
  * @author USUARIO
  */
-public class Usuario {
+public class Pass_Users {
     
-     int id;
+     String sitio;
      String user;
      String pass;
+     int id_usuario;
      
-     public Usuario(){}
+      public Pass_Users(){}
+     
+     public Pass_Users(String user,String pass){
+         
+         this.user = user;
+         this.pass = pass;
+     }
 
-    public Usuario(String user, String pass) {
+    public Pass_Users(String sitio,String user, String pass,int id_usuario) {
+        
+        this.sitio=sitio;
         this.user = user;
         this.pass = pass;
+        this.id_usuario=id_usuario;
     }
 
-    public int getId() {
-        return id;
+    public String getSitio() {
+        return sitio;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setSitio(String sitio) {
+        this.sitio = sitio;
+    }
+
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id) {
+        this.id_usuario = id;
     }
     
     public String getUser() {
@@ -44,12 +62,4 @@ public class Usuario {
     public void setPass(String pass) {
         this.pass = pass;
     }
-    
-    
-    public String mostrar(){
-        
-        String info=user+pass;
-               info+="\n";
-      return info;
-    }  
 }
