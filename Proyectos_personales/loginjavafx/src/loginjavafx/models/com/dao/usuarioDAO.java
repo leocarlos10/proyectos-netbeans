@@ -54,13 +54,16 @@ public class usuarioDAO {
             statement.execute(sql);
             band =true;
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex,"Error",JOptionPane.ERROR_MESSAGE);
             band=false;
         }
         return band;
     }
     
     // metodo que devuelve la lista de usuarios.
+    
+    /*
+    
+    */
     public List<Usuario> listar(){
         
             // lista que resive el listado de Usuarios.

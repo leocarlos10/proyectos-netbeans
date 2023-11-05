@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="471.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.controller_vista1">
+   <children>
+      <Pane layoutY="-6.0" prefHeight="478.0" prefWidth="727.0" style="-fx-background-color: #C0C0C0;">
+         <children>
+            <TableView fx:id="tabla" layoutX="92.0" layoutY="228.0" prefHeight="200.0" prefWidth="560.0">
+              <columns>
+                <TableColumn fx:id="col_n_placa" prefWidth="128.0" text="Numero de placa" />
+                <TableColumn fx:id="col_tipo_vehiculo" prefWidth="119.0" text="Tipo de Vehiculo" />
+                  <TableColumn fx:id="col_fecha_hora_ingreso" prefWidth="151.0" text="fecha y hora de ingreso" />
+                  <TableColumn fx:id="col_fecha_hora_salida" prefWidth="160.0" text="fecha y hora de salida" />
+              </columns>
+            </TableView>
+            <MenuBar layoutX="92.0" layoutY="203.0" prefHeight="25.0" prefWidth="560.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Archivo">
+                  <items>
+                    <MenuItem fx:id="menuItem_salir" mnemonicParsing="false" onAction="#event_Salir" text="Salir" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Opciones">
+                  <items>
+                    <MenuItem fx:id="MenuItemAgregar" mnemonicParsing="false" onAction="#event_agregar" text="Agregar" />
+                        <MenuItem fx:id="menuItem_mostrar_datos" mnemonicParsing="false" onAction="#event_mostrar_datos" text="Mostrar datos (segun la placa)" />
+                        <MenuItem fx:id="menuItem_ord_tipo_placa" mnemonicParsing="false" onAction="#event_ord_t_p" text="ordenamiento(tipo vehiculo y placa)" />
+                        <MenuItem fx:id="menuItem_tiempo_estacionamiento" mnemonicParsing="false" onAction="#event_ord_tiempo_estacionamiento" text="ordenamiento descendente(tiempo estacionamiento)" />
+                        <MenuItem fx:id="menuItem_ord_valor_pagar" mnemonicParsing="false" onAction="#event_ord_valor_pagar" text="ordenamiento descendente(valor a pagar)" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <ImageView fitHeight="149.0" fitWidth="199.0" layoutX="289.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/Everything%20You%20Need%20To%20Know%20About%20Parking%20Apps.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="304.0" layoutY="33.0" text="Datos de los vehiculos" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
